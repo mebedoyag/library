@@ -1,8 +1,10 @@
-const button = document.querySelector(".new-book");
+const buttonNewBook = document.querySelector(".new-book");
+const buttonSave = document.querySelector(".save");
 const container = document.querySelector(".container");
-const form = document.querySelector(".form") ;
+const form = document.querySelector(".form");
 
-button.addEventListener("click", showForm);
+buttonNewBook.addEventListener("click", showForm);
+buttonSave.addEventListener("click", addBookToLibrary);
 
 let myLibrary = [];
 
@@ -28,22 +30,22 @@ Book.prototype.info = function() {
 // takes user’s input and store every book object into myLibrary
 
 function addBookToLibrary() {
-    let flag = true;
+    hideForm();
 
-    while (flag) {
-        const t = prompt("Title: ", 0);
-        const a = prompt("Author: ", 0);
-        const p = prompt("Pages: ", 0);
-        const r = prompt("Read: ", 0);
+    let inputs = form.elements;
+    let t = inputs[0].value; 
+    let a = inputs[1].value;
+    let p = inputs[2].value;
+    let r = inputs[3].value;
 
-        const more = prompt("Do you want add more? ");
-        
-        myLibrary.push(new Book(t, a, p, r));
+    myLibrary.push(new Book(t, a, p, r));
 
-        if( more === "no") flag = false; 
-    }
+    inputs[0].value = ""; 
+    inputs[1].value = "";
+    inputs[2].value = "";
+    inputs[3].value = "";
 
-    return myLibrary;
+    showBooks();
 }
 
 // Void -> Void
@@ -54,7 +56,7 @@ function showBooks() {
 }
 
 // Book -> Void
-// creates the box which contains each Book
+// creates the box which contains info regard to each Book
 
 function createCard(book) {
     let card = document.createElement("div");
@@ -69,11 +71,18 @@ function createCard(book) {
 }
 
 // Void -> Void
-// shows the form, changing the display property
+// shows and hide the form, changing the display property
 
 function showForm() {
     form.style.display = "block";
+    buttonSave.style.display = "block";
 }
+
+function hideForm() {
+    form.style.display = "none";
+    buttonSave.style.display = "none";
+}
+
 
 
 
