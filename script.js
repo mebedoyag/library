@@ -45,20 +45,16 @@ function addBookToLibrary() {
     inputs[2].value = "";
     inputs[3].value = "";
 
-    showBooks();
-}
-
-// Void -> Void
-// loops through the array and displays each book on the page.
-
-function showBooks() {
-    myLibrary.forEach(book => createCard(book));
+    const bookLast = getLastBook();
+    showBook(bookLast);
 }
 
 // Book -> Void
-// creates the box which contains info regard to each Book
+// displays the last book on the page.
 
-function createCard(book) {
+function showBook(book) {
+    // myLibrary.forEach(book => createCard(book));
+
     let card = document.createElement("div");
     let par = document.createElement("p");
 
@@ -81,6 +77,15 @@ function showForm() {
 function hideForm() {
     form.style.display = "none";
     buttonSave.style.display = "none";
+}
+
+// Void -> Book
+// gets last Book object form myLibrary
+
+function getLastBook() {
+    const indexLast = myLibrary.length;
+
+    return myLibrary[indexLast - 1];
 }
 
 
