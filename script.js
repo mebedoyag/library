@@ -1,6 +1,7 @@
 const buttonNewBook = document.querySelector(".new-book");
 const buttonSave = document.querySelector(".save");
 const container = document.querySelector(".container");
+const content = document.querySelector(".content");
 const form = document.querySelector(".form");
 
 buttonNewBook.addEventListener("click", showForm);
@@ -53,7 +54,6 @@ function addBookToLibrary() {
 // displays the last book on the page.
 
 function showBook(book) {
-    // myLibrary.forEach(book => createCard(book));
 
     let card = document.createElement("div");
     let par = document.createElement("p");
@@ -63,7 +63,7 @@ function showBook(book) {
     par.textContent = book.info();
 
     card.appendChild(par);
-    container.appendChild(card);
+    content.appendChild(card);
 }
 
 // Void -> Void

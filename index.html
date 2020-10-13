@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="entry-book">
-        <button class="new-book">NEW BOOK</button>
+    <header class="header">
+        <figure>
+            <img src="images/books.png" alt="logo">
+        </figure>
+        <div>
+            <ul>
+                <li><button class="new-book">New Book</button></li>
+                <li><button>Clear All</button></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container-form">
         <form class="form">
             <label for="title">Title: </label>
             <input type="text" name="title">
@@ -18,11 +28,14 @@
             <input type="number" name="pages">
             <label for="read">Read? </label>
             <input type="text" name="read">
-            <!-- <input class="save" type="submit" value="Save"> -->
         </form>
         <button class="save">Save</button>
     </div>
-    <div class="container"></div>
+    <main class="container">
+        <div class="content">
+
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
