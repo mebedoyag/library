@@ -1,4 +1,5 @@
 const buttonNewBook = document.querySelector(".new-book");
+const buttonClearAll = document.querySelector(".clear-all");
 const buttonSave = document.querySelector(".save");
 const container = document.querySelector(".container");
 const content = document.querySelector(".content");
@@ -6,6 +7,7 @@ const form = document.querySelector(".form");
 
 buttonNewBook.addEventListener("click", showForm);
 buttonSave.addEventListener("click", addBookToLibrary);
+//buttonClearAll.addEventListener("click", clearAll);
 
 
 let myLibrary = [];
@@ -103,7 +105,7 @@ function getLastBook() {
 }
 
 // Event -> Void
-// 
+// delete a Book object from myLibrary
 
 function removeBookofLibrary(e) {
     const bookToDelete = myLibrary.find((book) => book.info() === e.target.id);
@@ -111,15 +113,21 @@ function removeBookofLibrary(e) {
     myLibrary.splice(bookToDeleteIndex, 1);
     console.log(myLibrary);
 
+    clearScreen();
     showAllBooks();
 }
 
-//showAllBooks
+// Void -> Void
+// puts all Book objects in the page
 
+function showAllBooks() {
+    myLibrary.forEach((book) => showBook(book));
+}
 
+// Void -> Void
+// delete all cards from content
 
-
-
-
-
-
+function clearScreen() {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => content.removeChild(card));
+}
