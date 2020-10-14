@@ -7,6 +7,7 @@ const form = document.querySelector(".form");
 buttonNewBook.addEventListener("click", showForm);
 buttonSave.addEventListener("click", addBookToLibrary);
 
+
 let myLibrary = [];
 
 // A Book is an object:
@@ -48,6 +49,11 @@ function addBookToLibrary() {
 
     const bookLast = getLastBook();
     showBook(bookLast);
+
+    const buttonsDelete = document.querySelectorAll(".button-card");
+    buttonsDelete.forEach((button) => {
+        button.addEventListener("click", removeBookofLibrary)
+    });
 }
 
 // Book -> Void
@@ -55,14 +61,22 @@ function addBookToLibrary() {
 
 function showBook(book) {
 
+    const infoBook = book.info();
+
     let card = document.createElement("div");
     let par = document.createElement("p");
+    let but = document.createElement("button");
 
     card.classList.add("card");
     par.classList.add("par");
-    par.textContent = book.info();
+    but.classList.add("button-card");
+    but.setAttribute("id", infoBook)
+
+    par.textContent = infoBook;
+    but.textContent = "Delete";
 
     card.appendChild(par);
+    card.appendChild(but);
     content.appendChild(card);
 }
 
@@ -87,6 +101,21 @@ function getLastBook() {
 
     return myLibrary[indexLast - 1];
 }
+
+// Event -> Void
+// 
+
+function removeBookofLibrary(e) {
+    const bookToDelete = myLibrary.find((book) => book.info() === e.target.id);
+    const bookToDeleteIndex = myLibrary.indexOf(bookToDelete);
+    myLibrary.splice(bookToDeleteIndex, 1);
+    console.log(myLibrary);
+
+    showAllBooks();
+}
+
+//showAllBooks
+
 
 
 

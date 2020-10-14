@@ -9,33 +9,39 @@
 <body>
     <header class="header">
         <figure>
-            <img src="images/books.png" alt="logo">
+            <img src="images/books.svg" height="45" alt="logo">
         </figure>
-        <div>
+        <div class="menu">
             <ul>
                 <li><button class="new-book">New Book</button></li>
                 <li><button>Clear All</button></li>
             </ul>
         </div>
     </header>
+    <main class="container">
+        <div class="content"></div>
+    </main>
     <div class="container-form">
         <form class="form">
-            <label for="title">Title: </label>
-            <input type="text" name="title">
-            <label for="author">Author: </label>
-            <input type="text" name="author">
-            <label for="pages"># Pages: </label>
-            <input type="number" name="pages">
-            <label for="read">Read? </label>
-            <input type="text" name="read">
+            <label for="title">
+                <span>Title: </span>
+                <input type="text" name="title" id="title" required>
+            </label>
+            <label for="author"> 
+                <span>Author: </span>
+                <input type="text" name="author" id="author" required>
+            </label>
+            <label for="pages">
+                <span>Pages: </span>
+                <input type="number" name="pages" id="pages" required>
+            </label>
+            <label for="read">
+                <span>Read? </span>
+                <input type="text" name="read" id="read" required>
+            </label>
+            <input class="save" type="submit" name="" id="">
         </form>
-        <button class="save">Save</button>
     </div>
-    <main class="container">
-        <div class="content">
-
-        </div>
-    </main>
     <script src="script.js"></script>
 </body>
 </html>
