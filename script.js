@@ -52,34 +52,35 @@ function addBookToLibrary() {
     const bookLast = getLastBook();
     showBook(bookLast);
 
-    const buttonsDelete = document.querySelectorAll(".button-card");
-    buttonsDelete.forEach((button) => {
-        button.addEventListener("click", removeBookofLibrary)
-    });
 }
 
 // Book -> Void
 // displays the last book on the page.
 
 function showBook(book) {
-
+    
     const infoBook = book.info();
-
+    
     let card = document.createElement("div");
     let par = document.createElement("p");
     let but = document.createElement("button");
-
+    
     card.classList.add("card");
     par.classList.add("par");
     but.classList.add("button-card");
     but.setAttribute("id", infoBook)
-
+    
     par.textContent = infoBook;
     but.textContent = "Delete";
-
+    
     card.appendChild(par);
     card.appendChild(but);
     content.appendChild(card);
+    
+    const buttonsDelete = document.querySelectorAll(".button-card");
+    buttonsDelete.forEach((button) => {
+        button.addEventListener("click", removeBookofLibrary)
+    });
 }
 
 // Void -> Void

@@ -8,6 +8,11 @@ body {
     justify-content: space-between;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .menu {
     display: flex;
     align-items: center;
@@ -27,6 +32,8 @@ li {
 
 button {
     padding: 10px;
+    border-radius: 10px;
+    background-color: #ffac02;
 }
 
 .container-form {
@@ -38,10 +45,13 @@ button {
     display: none;
     position: relative;
     top: -650px;
+    right: 20px;
 }
 
 input {
     display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -50,6 +60,11 @@ input {
     /* height: 100%; */
     display: flex;
     justify-content: center;
+}
+
+.container-form {
+    border: 1px black solid;
+    border-radius: 5px;
 }
 
 .content {
