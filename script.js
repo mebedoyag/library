@@ -7,13 +7,13 @@ const form = document.querySelector(".form");
 
 buttonNewBook.addEventListener("click", showForm);
 buttonSave.addEventListener("click", addBookToLibrary);
-//buttonClearAll.addEventListener("click", clearAll);
+buttonClearAll.addEventListener("click", clearScreen);
 
 
 let myLibrary = [];
 
 // A Book is an object:
-//   new Book(String, String, Number, Boolean)
+//   new Book(String, String, String, String)
 // interpretation: a card with information about books.
 
 function Book(title, author, pages, read) {
