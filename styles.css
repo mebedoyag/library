@@ -103,4 +103,10 @@ input {
 .button-card {
     position: absolute;
     top: 120px;
+} 
+
+.button-status {
+    position: absolute;
+    top: 120px;
+    left: 120px ;
 }

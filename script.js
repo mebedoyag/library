@@ -27,7 +27,11 @@ function Book(title, author, pages, read) {
 // returns the information of a Book
 
 Book.prototype.info = function() {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read} read yet `;
+    return `${this.title} ${this.author} ${this.pages} ${this.read}`;
+};
+
+Book.prototype.info2 = function() {
+    return `${this.title} ${this.author} ${this.pages}`;
 };
 
 // Void -> Array-of-Books
@@ -60,26 +64,38 @@ function addBookToLibrary() {
 function showBook(book) {
     
     const infoBook = book.info();
+    const infoBook2 = book.info2();
     
     let card = document.createElement("div");
     let par = document.createElement("p");
-    let but = document.createElement("button");
+    let butDel = document.createElement("button");
+    let butStatus = document.createElement("button");
     
     card.classList.add("card");
     par.classList.add("par");
-    but.classList.add("button-card");
-    but.setAttribute("id", infoBook)
+    butDel.classList.add("button-card");
+    butDel.setAttribute("id", infoBook);
+    butStatus.classList.add("button-status");
+    butStatus.setAttribute("id", infoBook2)
+    
     
     par.textContent = infoBook;
-    but.textContent = "Delete";
+    butDel.textContent = "Del";
+    butStatus.textContent = "Sta";
     
     card.appendChild(par);
-    card.appendChild(but);
+    card.appendChild(butDel);
+    card.appendChild(butStatus);
     content.appendChild(card);
     
     const buttonsDelete = document.querySelectorAll(".button-card");
     buttonsDelete.forEach((button) => {
         button.addEventListener("click", removeBookofLibrary)
+    });
+
+    const buttonsStatus = document.querySelectorAll(".button-status");
+    buttonsStatus.forEach((button) => {
+        button.addEventListener("click", changeReadStatus)
     });
 }
 
@@ -113,6 +129,17 @@ function removeBookofLibrary(e) {
     const bookToDeleteIndex = myLibrary.indexOf(bookToDelete);
     myLibrary.splice(bookToDeleteIndex, 1);
     console.log(myLibrary);
+
+    clearScreen();
+    showAllBooks();
+}
+
+// Event -> Void
+// changes read status of a Book object
+
+function changeReadStatus(e) {
+    const bookToChange = myLibrary.find((book) => book.info2() === e.target.id);
+    bookToChange.read === "no" ? bookToChange.read = "si" : bookToChange.read = "no";
 
     clearScreen();
     showAllBooks();
